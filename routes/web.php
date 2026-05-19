@@ -1,10 +1,13 @@
 <?php
 
 
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+   if(Auth::loginUsingId(1)) {
+       return redirect()->route('tasks.index');
+   }
 });
 
-Route::resource('tasks', \App\Http\Controllers\TasksController::class);
+Route::resource('tasks', TasksController::class);

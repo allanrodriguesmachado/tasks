@@ -11,7 +11,6 @@ class TasksController extends Controller
     {
         $query = Task::query();
 
-        // Filtro por status
         if ($request->filled('status')) {
              $query->where('status', $request->status)->get();
         }
